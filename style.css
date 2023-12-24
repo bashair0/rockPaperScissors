@@ -1,0 +1,228 @@
+:root {
+  --clr-primary-white: hsl(0, 0%, 97%);
+  /* Scissors radiant */
+  --clr-primary-orange: hsl(39, 89%, 49%);
+  --clr-primary-orange-2: hsl(40, 84%, 53%);
+  /* Paper radiant */
+  --clr-primary-blue: hsl(230, 89%, 62%);
+  --clr-primary-blue-2: hsl(230, 89%, 65%);
+  /* Rock radiant */
+  --clr-primary-red: hsl(349, 71%, 52%);
+  --clr-primary-red-2: hsl(349, 70%, 56%);
+  /* Lizard radiant */
+  --clr-primary-violet: hsl(261, 73%, 60%);
+  --clr-primary-violet-2: hsl(261, 72%, 63%);
+  /* Spock radiant */
+  --clr-primary-cyan: hsl(189, 59%, 53%);
+  --clr-primary-cyan-2: hsl(189, 58%, 57%);
+
+  /* background radiant from 800 to 900 */
+  --clr-neutral-900: hsl(237, 49%, 15%);
+  --clr-neutral-800: hsl(214, 47%, 23%);
+  /* dark text color */
+  --clr-neutral-700: hsl(229, 25%, 31%);
+  /* header outline color */
+  --clr-neutral-600: hsl(217, 16%, 45%);
+  /* score text color */
+  --clr-neutral-500: hsl(229, 64%, 46%);
+}
+
+.clr-dark-text {
+  color: var(--clr-neutral-700);
+}
+
+.clr-white-text {
+  color: var(--clr-primary-white);
+}
+
+.clr-score-text {
+  color: var(--clr-neutral-500);
+}
+
+.clr-winScore-text {
+  color: var(--clr-primary-red);
+}
+
+.fs-big {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.fs-med {
+  font-size: 1.5rem;
+}
+
+.border-radius-10 {
+  border-radius: 10px;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+body {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  flex-direction: column;
+  height: 100vh;
+  padding: 2rem;
+
+  background: content-box
+    radial-gradient(var(--clr-neutral-800), var(--clr-neutral-900));
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.score-container {
+  padding: 1rem;
+  border: 3px solid var(--clr-neutral-600);
+}
+
+@media only screen and (min-width: 28.125em) {
+  .score-container {
+    min-width: 90%;
+  }
+}
+
+@media only screen and (min-width: 62.5em) {
+  .score-container {
+    min-width: 60%;
+  }
+}
+
+.score {
+  height: 6rem;
+  width: 7rem;
+  background-color: var(--clr-primary-white);
+  padding: 0.5rem;
+  flex-direction: column;
+}
+
+.result-msg {
+  margin-block: 2rem;
+}
+
+.background-img {
+  width: 20rem;
+
+  background-image: url(images/bg-pentagon.svg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  aspect-ratio: 1;
+
+  position: relative;
+}
+
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  cursor: pointer;
+  position: absolute;
+  background-color: var(--clr-primary-white);
+  width: 7rem;
+  height: 7rem;
+  padding: 1rem;
+  border: 13px solid;
+  border-radius: 50%;
+
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+input[id="rock"] {
+  background-image: url(images/icon-rock.svg);
+  border-color: var(--clr-primary-red-2);
+  /* box-shadow: 0 0.5em 0 var(--clr-primary-red); */
+  right: 35px;
+  bottom: -30px;
+}
+
+input[id="lizard"] {
+  background-image: url(images/icon-lizard.svg);
+  border-color: var(--clr-primary-violet-2);
+  left: 35px;
+  bottom: -30px;
+}
+input[id="spock"] {
+  background-image: url(images/icon-spock.svg);
+  border-color: var(--clr-primary-cyan-2);
+  left: -35px;
+  top: 80px;
+}
+input[id="paper"] {
+  background-image: url(images/icon-paper.svg);
+  border-color: var(--clr-primary-blue-2);
+  right: -30px;
+  top: 80px;
+}
+input[id="scissors"] {
+  background-image: url(images/icon-scissors.svg);
+  border-color: var(--clr-primary-orange-2);
+  left: 100px;
+  top: -40px;
+}
+
+.rules-btn {
+  padding: 0.5rem 2rem;
+  background-color: transparent;
+  border: 1px solid var(--clr-primary-white);
+}
+
+@media only screen and (min-width: 48.75em) {
+  .rules-btn {
+    align-self: flex-end;
+  }
+}
+
+.rules-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  z-index: 1;
+
+  justify-content: center;
+}
+
+.rules-container {
+  background-color: var(--clr-primary-white);
+  padding: 2rem;
+
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+@media only screen and (max-width: 48.75em) {
+  .rules-container {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.rules-header {
+  width: 100%;
+}
+
+.display-none {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}

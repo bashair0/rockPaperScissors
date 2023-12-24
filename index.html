@@ -3,8 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png" />
     <script src="script.js" defer></script>
-    <title>Document</title>
+
+    <title>Frontend Mentor | Rock, Paper, Scissors</title>
   </head>
-  <body></body>
+  <body class="flex">
+    <nav class="score-container flex border-radius-10">
+      <img src="images/logo-bonus.svg" alt="logo" />
+      <div class="score | flex border-radius-10 clr-score-text">
+        Your score <span class="player-score fs-big clr-dark-text">0</span>
+      </div>
+      <div class="score | flex border-radius-10 clr-score-text">
+        House score <span class="computer-score fs-big clr-dark-text">0</span>
+      </div>
+    </nav>
+    <p class="result-msg | clr-white-text fs-med"></p>
+
+    <form class="background-img">
+      <input type="radio" name="choice" id="rock" value="rock" />
+      <input type="radio" name="choice" id="paper" value="paper" />
+      <input type="radio" name="choice" id="scissors" value="scissors" />
+      <input type="radio" name="choice" id="lizard" value="lizard" />
+      <input type="radio" name="choice" id="spock" value="spock" />
+    </form>
+
+    <div class="rules-background flex">
+      <div class="rules-container flex border-radius-10">
+        <div class="rules-header flex">
+          <h2>RULES</h2>
+          <button class="close-icon">
+            <img src="images/icon-close.svg" alt="close icon" />
+          </button>
+        </div>
+
+        <img
+          class="rules-img"
+          src="images/image-rules-bonus.svg"
+          alt="rules image" />
+      </div>
+    </div>
+
+    <button class="rules-btn | border-radius-10 clr-white-text">RULES</button>
+  </body>
 </html>
