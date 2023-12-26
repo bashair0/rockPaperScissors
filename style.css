@@ -25,6 +25,9 @@
   --clr-neutral-600: hsl(217, 16%, 45%);
   /* score text color */
   --clr-neutral-500: hsl(229, 64%, 46%);
+
+  --shadow-light: #00000026;
+  --shadow-med: #0000004d;
 }
 
 .clr-dark-text {
@@ -123,6 +126,7 @@ input[type="radio"] {
   cursor: pointer;
   position: absolute;
   background-color: var(--clr-primary-white);
+  box-shadow: inset 0 0.2rem var(--shadow-light);
   width: 7rem;
   height: 7rem;
   padding: 1rem;
@@ -136,13 +140,13 @@ input[type="radio"] {
 input[id="rock"] {
   background-image: url(images/icon-rock.svg);
   border-color: var(--clr-primary-red-2);
-  /* box-shadow: 0 0.5em 0 var(--clr-primary-red); */
   right: 35px;
   bottom: -30px;
 }
 
 input[id="lizard"] {
   background-image: url(images/icon-lizard.svg);
+
   border-color: var(--clr-primary-violet-2);
   left: 35px;
   bottom: -30px;
