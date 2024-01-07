@@ -73,8 +73,7 @@ body {
 
   background: content-box
     radial-gradient(var(--clr-neutral-800), var(--clr-neutral-900));
-  background-repeat: no-repeat;
-  background-size: cover;
+  min-height: 100vh;
 }
 
 .score-container {
@@ -107,7 +106,7 @@ body {
 }
 
 .background-img {
-  width: 20rem;
+  width: 50%;
 
   background-image: url(images/bg-pentagon.svg);
   background-position: center;
@@ -116,6 +115,7 @@ body {
   aspect-ratio: 1;
 
   position: relative;
+  /* z-index: -1; */
 }
 
 input[type="radio"] {
@@ -126,48 +126,100 @@ input[type="radio"] {
   cursor: pointer;
   position: absolute;
   background-color: var(--clr-primary-white);
-  box-shadow: inset 0 0.2rem var(--shadow-light);
-  width: 7rem;
-  height: 7rem;
-  padding: 1rem;
-  border: 13px solid;
+  box-shadow: inset 0 0rem var(--shadow-light);
+  width: 6rem;
+  height: 6rem;
   border-radius: 50%;
 
   background-repeat: no-repeat;
   background-position: center;
 }
 
+input[type="radio"]::before {
+  content: "";
+  width: 130%;
+  height: 130%;
+  position: absolute;
+  left: -15%;
+  top: -15%;
+  border-radius: 50%;
+
+  z-index: -1;
+}
+
 input[id="rock"] {
   background-image: url(images/icon-rock.svg);
-  border-color: var(--clr-primary-red-2);
-  right: 35px;
-  bottom: -30px;
+  right: 27rem;
+  bottom: -2rem;
+}
+
+input[id="rock"]::before {
+  background: linear-gradient(
+    to bottom,
+    var(--clr-primary-red-2),
+    var(--clr-primary-red)
+  );
+  box-shadow: 0 0.3rem var(--shadow-med), 0 0.3rem var(--clr-primary-red);
 }
 
 input[id="lizard"] {
   background-image: url(images/icon-lizard.svg);
+  left: 27rem;
+  bottom: -2rem;
+}
 
-  border-color: var(--clr-primary-violet-2);
-  left: 35px;
-  bottom: -30px;
+input[id="lizard"]::before {
+  background: linear-gradient(
+    to bottom,
+    var(--clr-primary-violet-2),
+    var(--clr-primary-violet)
+  );
+  box-shadow: 0 0.3rem var(--shadow-med), 0 0.3rem var(--clr-primary-violet);
 }
 input[id="spock"] {
   background-image: url(images/icon-spock.svg);
-  border-color: var(--clr-primary-cyan-2);
-  left: -35px;
-  top: 80px;
+  left: 8rem;
+  top: 5rem;
 }
+
+input[id="spock"]::before {
+  background: linear-gradient(
+    to bottom,
+    var(--clr-primary-cyan-2),
+    var(--clr-primary-cyan)
+  );
+  box-shadow: 0 0.3rem var(--shadow-med), 0 0.3rem var(--clr-primary-cyan);
+}
+
 input[id="paper"] {
   background-image: url(images/icon-paper.svg);
-  border-color: var(--clr-primary-blue-2);
-  right: -30px;
-  top: 80px;
+  right: 8rem;
+  top: 5rem;
 }
+
+input[id="paper"]::before {
+  background: linear-gradient(
+    to bottom,
+    var(--clr-primary-blue-2),
+    var(--clr-primary-blue)
+  );
+  box-shadow: 0 0.3rem var(--shadow-med), 0 0.3rem var(--clr-primary-blue);
+}
+
 input[id="scissors"] {
   background-image: url(images/icon-scissors.svg);
   border-color: var(--clr-primary-orange-2);
-  left: 100px;
-  top: -40px;
+  left: 20rem;
+  top: -2rem;
+}
+
+input[id="scissors"]::before {
+  background: linear-gradient(
+    to bottom,
+    var(--clr-primary-orange-2),
+    var(--clr-primary-orange)
+  );
+  box-shadow: 0 0.3rem var(--shadow-med), 0 0.3rem var(--clr-primary-orange);
 }
 
 .rules-btn {
