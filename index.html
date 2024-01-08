@@ -4,69 +4,58 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- displays site properly based on user's device -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap"
-      rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
 
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
       href="./images/favicon-32x32.png" />
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
 
     <title>Frontend Mentor | Rock, Paper, Scissors</title>
   </head>
-  <body class="flex">
-    <nav class="score-container flex border-radius-10">
-      <img src="images/logo-bonus.svg" alt="logo" />
-      <div class="score | flex border-radius-10 clr-score-text">
-        Your score <span class="player-score fs-big clr-dark-text">0</span>
-      </div>
-      <div class="score | flex border-radius-10 clr-score-text">
-        House score <span class="computer-score fs-big clr-dark-text">0</span>
-      </div>
-    </nav>
-    <p class="result-msg | clr-white-text fs-med"></p>
-
-    <div class="background-img">
+  <body>
+    <div class="container">
+      <header class="header">
+        <img src="images/logo.svg" alt="logo" class="logo" />
+        <div class="score">
+          <div class="score__title clr-score-text">score</div>
+          <div class="score__number house-score clr-score-number">0</div>
+        </div>
+        <!-- <div class="score">
+          <div class="score__title clr-score-text">player score</div>
+          <div class="score__number player-score clr-score-number">0</div>
+        </div> -->
+      </header>
+    </div>
+    <section class="options">
       <input
         type="radio"
         name="choice"
         class="choice choice-rock"
         id="rock"
         value="rock" />
+
       <input
         type="radio"
         name="choice"
         class="choice choice-paper"
         id="paper"
         value="paper" />
+
       <input
         type="radio"
         name="choice"
         class="choice choice-scissors"
         id="scissors"
         value="scissors" />
-      <input
-        type="radio"
-        name="choice"
-        class="choice choice-lizard"
-        id="lizard"
-        value="lizard" />
-      <input
-        type="radio"
-        name="choice"
-        class="choice choice-spock"
-        id="spock"
-        value="spock" />
-    </div>
+    </section>
 
     <div class="rules-background flex">
       <div class="rules-container flex border-radius-10">
         <div class="rules-header flex">
-          <h2>RULES</h2>
+          <h2>Rules</h2>
           <button class="close-icon">
             <img src="images/icon-close.svg" alt="close icon" />
           </button>
@@ -79,6 +68,8 @@
       </div>
     </div>
 
-    <button class="rules-btn | border-radius-10 clr-white-text">RULES</button>
+    <div class="btn-container">
+      <button class="rules-btn | border-radius-10 clr-white-text">Rules</button>
+    </div>
   </body>
 </html>

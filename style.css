@@ -1,3 +1,7 @@
+/* Font */
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap");
+
+/* Variables */
 :root {
   --clr-primary-white: hsl(0, 0%, 97%);
   /* Scissors radiant */
@@ -30,7 +34,7 @@
   --shadow-med: #0000004d;
 }
 
-.clr-dark-text {
+.clr-score-number {
   color: var(--clr-neutral-700);
 }
 
@@ -46,192 +50,208 @@
   color: var(--clr-primary-red);
 }
 
-.fs-big {
-  font-size: 3rem;
-  font-weight: 700;
-}
-
-.fs-med {
-  font-size: 1.5rem;
-}
-
-.border-radius-10 {
-  border-radius: 10px;
-}
-
 .flex {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 }
 
 body {
   font-family: "Barlow Semi Condensed", sans-serif;
-  flex-direction: column;
-  height: 100vh;
-  padding: 2rem;
-
-  background: content-box
-    radial-gradient(var(--clr-neutral-800), var(--clr-neutral-900));
+  background: radial-gradient(
+      at top,
+      var(--clr-neutral-800),
+      var(--clr-neutral-900)
+    )
+    no-repeat;
   min-height: 100vh;
+  text-transform: uppercase;
+  color: var(--clr-primary-white);
+
+  margin: 2rem;
 }
 
-.score-container {
-  padding: 1rem;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 150px;
   border: 3px solid var(--clr-neutral-600);
+  border-radius: 20px;
+  padding: 1rem;
 }
 
-@media only screen and (min-width: 28.125em) {
-  .score-container {
-    min-width: 90%;
+@media only screen and (min-width: 53.125em) {
+  .header {
+    width: 70%;
+    margin: 0 auto;
   }
 }
 
-@media only screen and (min-width: 62.5em) {
-  .score-container {
-    min-width: 60%;
+@media only screen and (min-width: 90em) {
+  .header {
+    width: 1024px;
   }
+}
+
+.header > img {
+  height: 60%;
 }
 
 .score {
-  height: 6rem;
-  width: 7rem;
-  background-color: var(--clr-primary-white);
-  padding: 0.5rem;
+  display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--clr-primary-white);
+  border-radius: 10px;
+  width: 90px;
+  height: 100%;
+  line-height: 1;
+}
+@media only screen and (min-width: 34.375em) {
+  .header {
+    padding: 1rem 1.4rem 1rem 2rem;
+  }
+  .header > img {
+    height: 100%;
+  }
+
+  .score {
+    width: 150px;
+  }
 }
 
-.result-msg {
-  margin-block: 2rem;
+.score__title {
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
 }
 
-.background-img {
-  width: 50%;
+.score__number {
+  font-size: 4rem;
+  font-weight: 700;
+}
 
-  background-image: url(images/bg-pentagon.svg);
+.options {
+  position: relative;
+  display: grid;
+  grid-template-columns: (repeat(2, 1fr));
+  grid-template-areas:
+    "paper scissors"
+    "rock rock";
+  place-items: center;
+  width: 22rem;
+  height: 20rem;
+  margin: 4rem auto;
+}
+
+@media only screen and (max-width: 24.4375em) {
+  .options {
+    width: 18rem;
+    height: 20rem;
+  }
+}
+
+.options::before {
+  content: "";
+  position: absolute;
+  width: 70%;
+  height: 100%;
+
+  background: url("images/bg-triangle.svg") no-repeat;
+  z-index: -1;
   background-position: center;
   background-size: contain;
-  background-repeat: no-repeat;
-  aspect-ratio: 1;
-
-  position: relative;
-  /* z-index: -1; */
 }
 
-input[type="radio"] {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+.choice {
+  position: relative;
 
   cursor: pointer;
-  position: absolute;
   background-color: var(--clr-primary-white);
-  box-shadow: inset 0 0rem var(--shadow-light);
-  width: 6rem;
-  height: 6rem;
+  box-shadow: inset 0 0.5rem var(--shadow-light);
+  width: 5rem;
+  height: 5rem;
   border-radius: 50%;
 
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 50%;
 }
 
-input[type="radio"]::before {
+.choice::before {
   content: "";
-  width: 130%;
-  height: 130%;
   position: absolute;
   left: -15%;
   top: -15%;
+  width: 130%;
+  height: 130%;
   border-radius: 50%;
-
   z-index: -1;
 }
 
-input[id="rock"] {
-  background-image: url(images/icon-rock.svg);
-  right: 27rem;
-  bottom: -2rem;
-}
-
-input[id="rock"]::before {
-  background: linear-gradient(
-    to bottom,
-    var(--clr-primary-red-2),
-    var(--clr-primary-red)
-  );
-  box-shadow: 0 0.3rem var(--shadow-med), 0 0.3rem var(--clr-primary-red);
-}
-
-input[id="lizard"] {
-  background-image: url(images/icon-lizard.svg);
-  left: 27rem;
-  bottom: -2rem;
-}
-
-input[id="lizard"]::before {
-  background: linear-gradient(
-    to bottom,
-    var(--clr-primary-violet-2),
-    var(--clr-primary-violet)
-  );
-  box-shadow: 0 0.3rem var(--shadow-med), 0 0.3rem var(--clr-primary-violet);
-}
-input[id="spock"] {
-  background-image: url(images/icon-spock.svg);
-  left: 8rem;
-  top: 5rem;
-}
-
-input[id="spock"]::before {
-  background: linear-gradient(
-    to bottom,
-    var(--clr-primary-cyan-2),
-    var(--clr-primary-cyan)
-  );
-  box-shadow: 0 0.3rem var(--shadow-med), 0 0.3rem var(--clr-primary-cyan);
-}
-
-input[id="paper"] {
+.choice-paper {
+  grid-area: paper;
   background-image: url(images/icon-paper.svg);
-  right: 8rem;
-  top: 5rem;
 }
 
-input[id="paper"]::before {
+.choice-paper::before {
   background: linear-gradient(
     to bottom,
-    var(--clr-primary-blue-2),
-    var(--clr-primary-blue)
+    var(--clr-primary-blue),
+    var(--clr-primary-blue-2)
   );
-  box-shadow: 0 0.3rem var(--shadow-med), 0 0.3rem var(--clr-primary-blue);
+  box-shadow: 0 0.5rem var(--shadow-med), 0 0.5rem var(--clr-primary-blue-2);
 }
 
-input[id="scissors"] {
+.choice-scissors {
+  grid-area: scissors;
   background-image: url(images/icon-scissors.svg);
-  border-color: var(--clr-primary-orange-2);
-  left: 20rem;
-  top: -2rem;
 }
 
-input[id="scissors"]::before {
+.choice-scissors::before {
   background: linear-gradient(
     to bottom,
-    var(--clr-primary-orange-2),
-    var(--clr-primary-orange)
+    var(--clr-primary-orange),
+    var(--clr-primary-orange-2)
   );
-  box-shadow: 0 0.3rem var(--shadow-med), 0 0.3rem var(--clr-primary-orange);
+  box-shadow: 0 0.5rem var(--shadow-med), 0 0.5rem var(--clr-primary-orange-2);
+}
+
+.choice-rock {
+  grid-area: rock;
+  background-image: url(images/icon-rock.svg);
+}
+
+.choice-rock::before {
+  background: linear-gradient(
+    to bottom,
+    var(--clr-primary-red),
+    var(--clr-primary-red-2)
+  );
+  box-shadow: 0 0.5rem var(--shadow-med), 0 0.5rem var(--clr-primary-red-2);
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (min-width: 53.25em) {
+  .btn-container {
+    justify-content: end;
+  }
 }
 
 .rules-btn {
+  border: 2px solid var(--clr-neutral-600);
   padding: 0.5rem 2rem;
-  background-color: transparent;
-  border: 1px solid var(--clr-primary-white);
+  border-radius: 10px;
+  transition: 0.3s ease-out;
 }
 
-@media only screen and (min-width: 48.75em) {
-  .rules-btn {
-    align-self: flex-end;
-  }
+.rules-btn:hover {
+  border-color: var(--clr-primary-white);
 }
 
 .rules-background {
@@ -240,7 +260,7 @@ input[id="scissors"]::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  background: rgba(0, 0, 0, 0.5);
   z-index: 1;
 
   justify-content: center;
@@ -265,20 +285,37 @@ input[id="scissors"]::before {
   width: 100%;
 }
 
+.rules-header h2 {
+  color: var(--clr-neutral-700);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
 .display-none {
   display: none;
+}
+
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 button {
   cursor: pointer;
   background-color: transparent;
   border: none;
+  text-transform: inherit;
 }
 
 *,
 *::after,
 *::before {
   box-sizing: border-box;
+}
+
+* {
   margin: 0;
   padding: 0;
+  font: inherit;
 }
