@@ -19,16 +19,22 @@
     <div class="container">
       <header class="header">
         <img src="images/logo.svg" alt="logo" class="logo" />
+
         <div class="score">
-          <div class="score__title clr-score-text">score</div>
+          <div class="score__title clr-score-text">house score</div>
           <div class="score__number house-score clr-score-number">0</div>
         </div>
-        <!-- <div class="score">
+        <div class="score">
           <div class="score__title clr-score-text">player score</div>
           <div class="score__number player-score clr-score-number">0</div>
-        </div> -->
+        </div>
       </header>
     </div>
+    <div class="result flex">
+      <p class="result-msg">result</p>
+      <button class="replay-btn btn">play again!</button>
+    </div>
+
     <section class="options">
       <input
         type="radio"
@@ -53,7 +59,7 @@
     </section>
 
     <div class="rules-background flex">
-      <div class="rules-container flex border-radius-10">
+      <div class="rules-container flex">
         <div class="rules-header flex">
           <h2>Rules</h2>
           <button class="close-icon">
@@ -61,15 +67,14 @@
           </button>
         </div>
 
-        <img
-          class="rules-img"
-          src="images/image-rules-bonus.svg"
-          alt="rules image" />
+        <img class="rules-img" src="images/image-rules.svg" alt="rules image" />
       </div>
     </div>
 
     <div class="btn-container">
-      <button class="rules-btn | border-radius-10 clr-white-text">Rules</button>
+      <button class="rules-btn btn | border-radius-10 clr-white-text">
+        Rules
+      </button>
     </div>
   </body>
 </html>

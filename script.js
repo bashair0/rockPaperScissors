@@ -1,8 +1,19 @@
 let playerScore = 0
-let computerScore = 0
+let houseScore = 0
 let message = ''
-function getComputerChoice () {
-  const choices = ['rock', 'paper', 'scissors', 'lizard', 'spock']
+
+const radioButtons = document.querySelectorAll('input[name="choice"]')
+const playerScoreResult = document.querySelector('.player-score')
+const houseScoreResult = document.querySelector('.house-score')
+const resultMsg = document.querySelector('.result-msg')
+
+/* get custom property color values */
+const rootStyles = getComputedStyle(document.documentElement)
+const primaryRed = rootStyles.getPropertyValue('--clr-primary-red')
+const neutralGrey = rootStyles.getPropertyValue('--clr-neutral-700')
+
+function getHouseChoice () {
+  const choices = ['rock', 'paper', 'scissors']
   const randomChoice = Math.floor(Math.random() * choices.length)
   return choices[randomChoice]
 }
@@ -15,79 +26,75 @@ function getPlayerInput () {
   return selectedValue
 }
 
-function playRound (playerSelection, computerSelection) {
-  if (playerSelection === computerSelection) {
+function playRound (playerSelection, houseSelection) {
+  if (playerSelection === houseSelection) {
     message = "it's a TIE!"
   } else if (
-    (playerSelection === 'rock' && computerSelection === 'paper') ||
-    (playerSelection === 'scissors' && computerSelection === 'rock') ||
-    (playerSelection === 'paper' && computerSelection === 'scissors') ||
-    (playerSelection === 'lizard' && computerSelection === 'rock') ||
-    (playerSelection === 'spock' && computerSelection === 'lizard') ||
-    (playerSelection === 'scissors' && computerSelection === 'spock') ||
-    (playerSelection === 'lizard' && computerSelection === 'scissors') ||
-    (playerSelection === 'spock' && computerSelection === 'paper') ||
-    (playerSelection === 'paper' && computerSelection === 'lizard') ||
-    (playerSelection === 'rock' && computerSelection === 'spock')
+    (playerSelection === 'rock' && houseSelection === 'paper') ||
+    (playerSelection === 'scissors' && houseSelection === 'rock') ||
+    (playerSelection === 'paper' && houseSelection === 'scissors')
   ) {
-    computerScore += 1
-    message = `You Lose! ${computerSelection} beats ${playerSelection}`
+    houseScore += 1
+    message = `You Lose! ${houseSelection} beats ${playerSelection}`
   } else if (
-    (playerSelection === 'paper' && computerSelection === 'rock') ||
-    (playerSelection === 'rock' && computerSelection === 'scissors') ||
-    (playerSelection === 'scissors' && computerSelection === 'paper') ||
-    (playerSelection === 'rock' && computerSelection === 'lizard') ||
-    (playerSelection === 'lizard' && computerSelection === 'spock') ||
-    (playerSelection === 'spock' && computerSelection === 'scissors') ||
-    (playerSelection === 'scissors' && computerSelection === 'lizard') ||
-    (playerSelection === 'paper' && computerSelection === 'spock') ||
-    (playerSelection === 'lizard' && computerSelection === 'paper') ||
-    (playerSelection === 'spock' && computerSelection === 'rock')
+    (playerSelection === 'paper' && houseSelection === 'rock') ||
+    (playerSelection === 'rock' && houseSelection === 'scissors') ||
+    (playerSelection === 'scissors' && houseSelection === 'paper')
   ) {
     playerScore += 1
-    message = `You Win! ${playerSelection} beats ${computerSelection}`
+    message = `You Win! ${playerSelection} beats ${houseSelection}`
   }
 }
 
 function game () {
-  let winnerScore = 5
-  let endGame
-
-  while (!endGame) {
-    let computerSelection = getComputerChoice()
-    let playerSelection = getPlayerInput()
-    console.log(playRound(playerSelection, computerSelection))
-    console.log(`player score ${playerScore}`)
-    console.log(`computer score ${computerScore}`)
-    if (playerScore === winnerScore || computerScore === winnerScore) {
-      endGame = true
-    }
-  }
+  let houseSelection = getHouseChoice()
+  let playerSelection = getPlayerInput()
+  playRound(playerSelection, houseSelection)
+  playerScoreResult.textContent = playerScore
+  houseScoreResult.textContent = houseScore
+  resultMsg.textContent = message
 }
 
-const selectedRadio = document.querySelectorAll('input[name="choice"]')
-const playerScoreResult = document.querySelector('.player-score')
-const computerScoreResult = document.querySelector('.computer-score')
-const resultMsg = document.querySelector('.result-msg')
+function reset () {
+  playerScore = 0
+  houseScore = 0
+  message = 'result'
+  playerScoreResult.textContent = playerScore
+  houseScoreResult.textContent = houseScore
+  resultMsg.textContent = message
+  playerScoreResult.style.color = neutralGrey
+  houseScoreResult.style.color = neutralGrey
+  replayBtn.classList.remove('display-block')
+}
 
-selectedRadio.forEach(radio => {
-  radio.addEventListener('click', () => {
-    let computerSelection = getComputerChoice()
-    let playerSelection = getPlayerInput()
-    playRound(playerSelection, computerSelection)
-    playerScoreResult.textContent = playerScore
-    computerScoreResult.textContent = computerScore
-    resultMsg.textContent = message
+radioButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    let winnerScore = 5
+    if (playerScore === winnerScore) {
+      playerScoreResult.style.color = 'red'
+      replayBtn.classList.add('display-block')
+    } else if (houseScore === winnerScore) {
+      houseScoreResult.style.color = 'red'
+      replayBtn.classList.add('display-block')
+    } else {
+      game()
+    }
   })
 })
 
+/* DISPLAY AND REMOVE RULES  */
 const closeBtn = document.querySelector('.close-icon')
 const rulesBtn = document.querySelector('.rules-btn')
 const rulesDiv = document.querySelector('.rules-background')
 
 closeBtn.addEventListener('click', () => {
-  rulesDiv.classList.add('display-none')
+  rulesDiv.classList.toggle('display-none')
 })
 rulesBtn.addEventListener('click', () => {
-  rulesDiv.classList.remove('display-none')
+  rulesDiv.classList.toggle('display-none')
 })
+
+/* PLAY AGAIN BUTTON  */
+const replayBtn = document.querySelector('.replay-btn')
+
+replayBtn.addEventListener('click', reset)
