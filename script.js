@@ -7,18 +7,13 @@ const playerScoreResult = document.querySelector('.player-score')
 const houseScoreResult = document.querySelector('.house-score')
 const resultMsg = document.querySelector('.result-msg')
 
-/* get custom property color values */
-const rootStyles = getComputedStyle(document.documentElement)
-const primaryRed = rootStyles.getPropertyValue('--clr-primary-red')
-const neutralGrey = rootStyles.getPropertyValue('--clr-neutral-700')
-
 function getHouseChoice () {
   const choices = ['rock', 'paper', 'scissors']
   const randomChoice = Math.floor(Math.random() * choices.length)
   return choices[randomChoice]
 }
 
-function getPlayerInput () {
+function getPlayerChoice () {
   const selectedRadio = document.querySelector('input[name="choice"]:checked')
 
   // Get the value of the selected radio button
@@ -48,11 +43,8 @@ function playRound (playerSelection, houseSelection) {
 
 function game () {
   let houseSelection = getHouseChoice()
-  let playerSelection = getPlayerInput()
+  let playerSelection = getPlayerChoice()
   playRound(playerSelection, houseSelection)
-  playerScoreResult.textContent = playerScore
-  houseScoreResult.textContent = houseScore
-  resultMsg.textContent = message
 }
 
 function reset () {
@@ -62,8 +54,8 @@ function reset () {
   playerScoreResult.textContent = playerScore
   houseScoreResult.textContent = houseScore
   resultMsg.textContent = message
-  playerScoreResult.style.color = neutralGrey
-  houseScoreResult.style.color = neutralGrey
+  playerScoreResult.classList.remove('clr-winScore-text')
+  houseScoreResult.classList.remove('clr-winScore-text')
   replayBtn.classList.remove('display-block')
 }
 
@@ -71,14 +63,19 @@ radioButtons.forEach(button => {
   button.addEventListener('click', () => {
     let winnerScore = 5
     if (playerScore === winnerScore) {
-      playerScoreResult.style.color = 'red'
+      playerScoreResult.classList.add('clr-winScore-text')
       replayBtn.classList.add('display-block')
+      message = 'You won the game! congrats'
     } else if (houseScore === winnerScore) {
-      houseScoreResult.style.color = 'red'
+      houseScoreResult.classList.add('clr-winScore-text')
       replayBtn.classList.add('display-block')
+      message = 'You lost the game! best luck next time'
     } else {
       game()
     }
+    playerScoreResult.textContent = playerScore
+    houseScoreResult.textContent = houseScore
+    resultMsg.textContent = message
   })
 })
 
